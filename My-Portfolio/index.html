@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parth Nagar - Portfolio</title>
+    <style>
+        * {margin:0; padding:0; box-sizing:border-box;}
+        html {scroll-behavior: smooth;}
+        body {background-color:#0a0a23; color:white; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height:1.6;}
+
+        /* Navbar */
+        nav {display:flex; justify-content:space-between; align-items:center; height:70px; padding:0 40px;
+             background: linear-gradient(90deg,#12123e,#1f1f5f); position:fixed; top:0; left:0; width:100%; z-index:1000; box-shadow:0px 4px 8px rgba(0,0,0,0.3);}
+        nav .left {font-size:1.5rem; font-weight:bold; color:#aa6be4;}
+        nav ul {display:flex; list-style:none;}
+        nav ul li {margin:0 15px;}
+        nav ul li a {color:white; text-decoration:none; font-weight:500; transition:color 0.3s;}
+        nav ul li a:hover {color:#00f7ff;}
+
+        /* Sections */
+        section {padding:100px 50px; max-width:1100px; margin:auto;}
+        section h1 {font-size:2.2rem; margin-bottom:20px; color:#aa6be4; text-align:center;}
+        section p {font-size:1rem; color:#ddd; text-align:center;}
+
+        /* Home Section */
+        .firstSection {display:flex; justify-content:space-around; align-items:center; flex-wrap:wrap; margin-top:80px;}
+        .leftSection {max-width:500px; text-align:center;}
+        .leftSection img.myPhoto {width:140px; height:140px; border-radius:50%; border:3px solid #aa6be4; margin-bottom:15px;}
+        .leftSection .Purple {color:#aa6be4;}
+        .leftSection .buttons {margin-top:20px;}
+        .btn {padding:12px 20px; margin:5px; background:#aa6be4; color:white; border-radius:6px; font-size:0.95rem; text-decoration:none; display:inline-block; transition:all 0.3s ease-in-out;}
+        .btn:hover {background:#9336e0; transform:scale(1.05);}
+        .rightSection img {width:300px;}
+
+        /* Work Experience */
+        #work div {background-color:#1a1a40; padding:15px; margin:15px 0; border-radius:8px; border-left:4px solid #aa6be4; display:flex; align-items:center; gap:15px; flex-wrap:wrap;}
+        #work h3 {margin-bottom:5px; color:#00f7ff; width:100%;}
+        #work p {color:#ccc; text-align:left; flex:1;}
+        .work-cert {width:80px; height:auto; border-radius:6px; border:2px solid #aa6be4;}
+
+        /* Tech Stack Section */
+        .tech-stack {background:#1a1a40; border-radius:10px; padding:20px; margin:30px auto; max-width:800px;}
+        .tech-stack h2 {color:#aa6be4; text-align:center; margin-bottom:15px;}
+        .tech-stack p {color:#ddd; text-align:center; margin:5px 0;}
+        .tech-stack span {display:inline-block; margin:5px 10px; background:#9336e0; padding:5px 10px; border-radius:5px; font-size:0.9rem;}
+
+        /* Certifications */
+        .certificates-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px;}
+        .certificate-card {background-color:#1a1a40; border-radius:10px; padding:10px; text-align:center; transition:transform 0.3s ease;}
+        .certificate-card img {max-width:100%; border-radius:6px; margin-bottom:10px;}
+        .certificate-card:hover {transform:translateY(-5px);}
+
+        /* Footer */
+        footer {background:#0e0e1a; padding-top:20px; margin-top:40px;}
+        .footer {display:flex; justify-content:space-between; flex-wrap:wrap; max-width:1100px; margin:auto; padding:20px;}
+        .footer h3, .footer h4 {color:#aa6be4;}
+        .footer ul {list-style:none; padding:0;}
+        .footer ul li {margin:5px 0;}
+        .footer ul li a {color:white; text-decoration:none; transition:color 0.3s;}
+        .footer ul li a:hover {color:#00f7ff;}
+        .footer-rights {text-align:center; color:gray; padding:10px 0; font-size:0.85rem; border-top:1px solid #222;}
+        a {word-break:break-word;}
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <div class="left">Parth's Portfolio</div>
+            <div class="right">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#work">Work Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#contact">Contact Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <main>
+        <section id="home" class="firstSection">
+            <div class="leftSection">
+                <img src="Screenshot 2025-08-14 203915.png" alt="Parth Nagar" class="myPhoto">
+                <h2>Hi, my name is <span class="Purple">Parth</span></h2>
+                <div>& I am a passionate</div>
+                <span id="element"></span>
+                <div class="buttons">
+                    <a href="Parth_Resume.pdf" download class="btn">Download Resume</a>
+                    <a href="https://github.com/Parthnagar24" target="_blank" class="btn">Visit GitHub</a>
+                    <a href="https://www.linkedin.com/in/parth-nagar-66b674278" target="_blank" class="btn">Visit LinkedIn</a>
+                </div>
+            </div>
+            <div class="rightSection">
+                <img src="dev.png" alt="">
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h1>About Me</h1>
+            <p>
+                I'm an aspiring Full Stack Developer, currently deep-diving into the MERN stack and beyond. With a strong focus on hands-on learning, I’m building modern, scalable web applications using:
+
+Frontend: React, Tailwind CSS, Redux, Zustand
+
+Backend: Node.js, Express, MongoDB, Prisma
+
+APIs & Auth: REST APIs, JWT Authentication
+
+AI Tools: Exploring AI integration using TensorFlow.js and LangChain
+
+I'm passionate about writing clean, efficient code and understanding how to bring real-world applications to life—from frontend UI to backend logic and database management.
+
+🌱 Currently Learning & Practicing:
+
+Building full-stack projects
+
+Strengthening data flow, state management, and deployment
+
+Integrating AI into web apps with modern JS tools
+
+💡 I believe in continuous learning, real-world practice, and building a strong foundation to become job-ready. I'm looking to connect with developers, mentors, and opportunities that can help me grow and contribute meaningfully to tech.
+
+Let’s connect and grow together!
+            </p>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="work">
+            <h1>Work Experience</h1>
+            <div>
+                <img src="certificate.png" alt="CodSoft Certificate" class="work-cert">
+                <h3>1. CodSoft - Web Development Intern</h3>
+                <p>Worked on real-world projects, sharpened development skills, and collaborated professionally.</p>
+            </div>
+            <div>
+                <img src="Screenshot 2025-07-18 131525.png" alt="Cognifyz Certificate" class="work-cert">
+                <h3>2. Cognifyz Technologies - Full Stack Development Intern</h3>
+                <p>Enhanced skills in full-stack development and collaborated on real-world projects.</p>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section id="tech">
+            <div class="tech-stack">
+                <h2>🚀 Tech Stack & Tools</h2>
+                <p>
+                    <span>React</span><span>Tailwind CSS</span><span>Redux</span><span>Zustand</span>
+                    <span>Node.js</span><span>Express.js</span><span>MongoDB</span><span>Prisma</span>
+                    <span>REST API</span><span>JWT</span>
+                    <span>TensorFlow.js</span><span>LangChain</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h1>Projects-GitHub Repository</h1>
+            <a href="https://github.com/Parthnagar24/JavaScript-Projects" target="_blank" class="btn">Vanilla JS Projects</a>
+             <a href="https://github.com/Parthnagar24/CODSOFT" target="_blank" class="btn">Project-CodSoft</a>
+              <a href="https://github.com/Parthnagar24/Cognifyz_Internship" target="_blank" class="btn">Project-Cognifyz</a>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <h1>Certifications</h1>
+            <div class="certificates-grid">
+                <div class="certificate-card">
+                    <img src="Screenshot 2025-08-07 202709.png" alt="Certificate 1">
+                    <p>Tata GenAI Powered Data Analytics Job Simulation</p>
+                </div>
+                <div class="certificate-card">
+                    <img src="Deloitte_DATA_ANALTYICS.png" alt="Certificate 2">
+                    <p>Deloitte Data Analytics Job Simulation</p>
+                </div>
+                <div class="certificate-card">
+                    <img src="Screenshot 2025-08-12 210119.png" alt="Certificate 3">
+                    <p>Google - Introduction to GenAI</p>
+                </div>
+                <div class="certificate-card">
+                    <img src="Screenshot 2025-08-14 181632.png" alt="Certificate 4">
+                    <p>Oracle Cloud Infrastructure 2025 Certified Generative AI Professional</p>
+                </div>
+                <div class="certificate-card">
+                    <img src="Screenshot 2025-08-14 225550.png" alt="Certificate 2">
+                    <p>Learn C++ Programming(Beginner - Advanced)</p>
+                </div>
+                <div class="certificate-card">
+                    <img src="Screenshot 2025-08-14 225524.png" alt="Certificate 2">
+                    <p>Unstop Amity Hack-O-Mania</p>
+                </div>
+                <div class="certificate-card">
+                    <img src="" alt="Certificate 2">
+                    <p>Nodejs-Beginner to Advanced</p>
+                </div>
+                <div class="certificate-card">
+                    <img src="Screenshot 2025-08-14 225456.png" alt="Certificate 2">
+                    <p>
+Nestlé eLearning 2025: Sustainability and Managerial Decision-Making</p>
+                </div>
+                <div class="certificate-card">
+                    <img src="" alt="Certificate 2">
+                    <p>Full Stack Developer Certification</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h1>Contact Me</h1>
+            <p>Email: <a href="mailto:parthnagar2406@gmail.com" style="color:#00f7ff;">parthnagar2406@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/parth-nagar-66b674278" target="_blank" style="color:#00f7ff;">linkedin.com/in/parth-nagar-66b674278</a></p>
+            <p>GitHub: <a href="https://github.com/Parthnagar24" target="_blank" style="color:#00f7ff;">github.com/Parthnagar24</a></p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer">
+            <div>
+                <h3>Parth's Developer Portfolio</h3>
+                <p>A showcase of my work, projects, and achievements in web development and AI/ML.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#work">Work Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://github.com/Parthnagar24" target="_blank">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/parth-nagar-66b674278" target="_blank">LinkedIn</a></li>
+                    <li><a href="mailto:parthnagar2406@gmail.com">Email</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-rights">
+            Copyright © parthsportfolio.com | All rights reserved
+        </div>
+    </footer>
+
+    <!-- Typed JS -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed('#element', {
+            strings: ['Full Stack Developer', 'AI/ML Enthusiast'],
+            typeSpeed: 50,
+            backSpeed: 50,
+            loop: true
+        });
+    </script>
+</body>
+</html>
