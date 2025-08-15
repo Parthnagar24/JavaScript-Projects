@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Menu -->
+    <section id="menu">
+        <h1>Tic Tac Toe</h1>
+        <div class="choice-group">
+            <h3>Choose Game Mode</h3>
+            <button data-mode="friend" class="modeBtn">👥 Friend</button>
+            <button data-mode="computer" class="modeBtn">🤖 Computer</button>
+        </div>
+        <div class="choice-group">
+            <h3>Choose Your Symbol</h3>
+            <button data-symbol="X" class="symbolBtn">X</button>
+            <button data-symbol="O" class="symbolBtn">O</button>
+        </div>
+        <button id="startGame" disabled>Start Game</button>
+    </section>
+
+    <!-- Game -->
+    <main id="gameArea" style="display:none;">
+        <header id="header">
+            <div id="xPlayerDisplay" class="player">X</div>
+            <h3 id="titleHeader">Turn: X</h3>
+            <div id="oPlayerDisplay" class="player">O</div>
+        </header>
+        <div id="board">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+        <button id="restartBtn">Restart</button>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
