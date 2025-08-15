@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
+}
+body {
+    background: linear-gradient(135deg, #0A0519, #1a1237);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    width: 200px;
+}
+.player {
+    background: #17122A;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 12px;
+    border: solid 4px #17122A;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+.player-active {
+    opacity: 1;
+    border-color: #2A2343;
+}
+#xPlayerDisplay { color: #1892EA; }
+#oPlayerDisplay { color: #A737FF; }
+#titleHeader {
+    font-size: 20px;
+    align-self: center;
+}
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 70px);
+    grid-template-rows: repeat(3, 70px);
+    gap: 12px;
+}
+.cell {
+    background: #17122A;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.cell:hover {
+    background: #2A2343;
+}
+#restartBtn {
+    margin-top: 20px;
+    width: 235px;
+    background: #17122A;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    color: white;
+}
+#restartBtn:hover {
+    background: #2A2343;
+}
+
+/* Menu */
+#menu {
+    text-align: center;
+}
+#menu h1 {
+    margin-bottom: 20px;
+}
+#menu button {
+    background: #17122A;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+#menu button:hover {
+    background: #2A2343;
+}
+#menu button.selected {
+    border: 2px solid #2A2343;
+}
