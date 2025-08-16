@@ -19,11 +19,9 @@ let songs = [
     {songName: "Sakhiyaan - Salam-e-Ishq", filePath: "songs/7.mp3", coverPath: "covers/7.jpg"},
     {songName: "Bhula Dena - Salam-e-Ishq", filePath: "songs/8.mp3", coverPath: "covers/8.jpg"},
     {songName: "Tumhari Kasam - Salam-e-Ishq", filePath: "songs/9.mp3", coverPath: "covers/9.jpg"},
-    {songName: "Dafli Wale - Old Bollywood", filePath: "songs/10.mp3", coverPath: "covers/11.jpeg"}, // using cover11
+    {songName: "Dafli Wale - Old Bollywood", filePath: "songs/10.mp3", coverPath: "covers/11.jpeg"},
     {songName: "Lag Ja Gale Se Phir - Woh Kaun Thi", filePath: "songs/11.mp3", coverPath: "covers/11.jpeg"}
 ];
-
-
 
 // Set cover and song names
 songItems.forEach((element, i)=>{ 
@@ -33,60 +31,67 @@ songItems.forEach((element, i)=>{
 
 // Play/pause
 masterPlay.addEventListener('click', ()=>{
-    if(audioElement.paused || audioElement.currentTime<=0){
+    if(audioElement.paused || audioElement.currentTime <= 0){
         audioElement.play();
-        masterPlay.classList.replace('fa-play-circle','fa-pause-circle');
+        masterPlay.className = 'far fa-3x fa-pause-circle';
         gif.style.opacity = 1;
     } else {
         audioElement.pause();
-        masterPlay.classList.replace('fa-pause-circle','fa-play-circle');
+        masterPlay.className = 'far fa-3x fa-play-circle';
         gif.style.opacity = 0;
     }
 });
 
 // Progress bar
 audioElement.addEventListener('timeupdate', ()=>{ 
-    let progress = parseInt((audioElement.currentTime/audioElement.duration)* 100); 
+    let progress = parseInt((audioElement.currentTime/audioElement.duration) * 100) || 0; 
     myProgressBar.value = progress;
 });
-myProgressBar.addEventListener('change', ()=>{
-    audioElement.currentTime = myProgressBar.value * audioElement.duration/100;
+
+myProgressBar.addEventListener('input', ()=>{
+    audioElement.currentTime = myProgressBar.value * audioElement.duration / 100;
 });
 
-// Play specific song
+// Make all songItemPlay buttons show play
 const makeAllPlays = ()=>{
     Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
-        element.classList.replace('fa-pause-circle','fa-play-circle');
+        element.className = 'far songItemPlay fa-play-circle';
     });
 };
+
+// Play specific song
 Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
-    element.addEventListener('click', (e)=>{ 
+    element.addEventListener('click', (e)=>{
+        let target = e.target.closest('.songItemPlay');
+        if(!target) return;
+
         makeAllPlays();
-        songIndex = parseInt(e.target.id);
-        e.target.classList.replace('fa-play-circle','fa-pause-circle');
-        audioElement.src = `songs/${songIndex+1}.mp3`;
+        songIndex = parseInt(target.id);
+        target.className = 'far songItemPlay fa-pause-circle';
+        audioElement.src = songs[songIndex].filePath;
         masterSongName.innerText = songs[songIndex].songName;
         audioElement.currentTime = 0;
         audioElement.play();
         gif.style.opacity = 1;
-        masterPlay.classList.replace('fa-play-circle','fa-pause-circle');
+        masterPlay.className = 'far fa-3x fa-pause-circle';
     });
 });
 
 // Next / Previous
 document.getElementById('next').addEventListener('click', ()=>{
     songIndex = (songIndex + 1) % songs.length;
-    audioElement.src = `songs/${songIndex+1}.mp3`;
+    audioElement.src = songs[songIndex].filePath;
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
-    masterPlay.classList.replace('fa-play-circle','fa-pause-circle');
+    masterPlay.className = 'far fa-3x fa-pause-circle';
 });
+
 document.getElementById('previous').addEventListener('click', ()=>{
     songIndex = (songIndex - 1 + songs.length) % songs.length;
-    audioElement.src = `songs/${songIndex+1}.mp3`;
+    audioElement.src = songs[songIndex].filePath;
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
-    masterPlay.classList.replace('fa-play-circle','fa-pause-circle');
+    masterPlay.className = 'far fa-3x fa-pause-circle';
 });
