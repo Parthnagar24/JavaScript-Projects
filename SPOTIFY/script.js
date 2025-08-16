@@ -2,12 +2,12 @@ console.log("Welcome to Spotify");
 
 // Initialize variables
 let songIndex = 0;
-let audioElement = new Audio(); // leave empty, set src on first play
+let audioElement = new Audio();
 let masterPlay = document.getElementById('masterPlay');
 let myProgressBar = document.getElementById('myProgressBar');
 let gif = document.getElementById('gif');
 let masterSongName = document.getElementById('masterSongName');
-let songItems = Array.from(document.getElementsByClassName('songItem'));
+let songItemContainer = document.querySelector('.songItemContainer');
 
 let songs = [
     {songName: "Warriyo - Mortals [NCS Release]", filePath: "songs/1.mp3", coverPath: "covers/1.jpg"},
@@ -23,50 +23,59 @@ let songs = [
     {songName: "Lag Ja Gale Se Phir - Woh Kaun Thi", filePath: "songs/11.mp3", coverPath: "covers/11.jpeg"}
 ];
 
-// Set song covers and names
-songItems.forEach((element, i) => {
-    element.getElementsByTagName("img")[0].src = songs[i].coverPath;
-    element.getElementsByClassName("songName")[0].innerText = songs[i].songName;
+// Generate song items dynamically
+songs.forEach((song, i) => {
+    let div = document.createElement('div');
+    div.classList.add('songItem');
+    div.innerHTML = `
+        <img src="${song.coverPath}" alt="${i+1}">
+        <span class="songName">${song.songName}</span>
+        <span class="songlistplay">
+            <span class="timestamp">03:50 <i id="${i}" class="fas songItemPlay fa-play-circle"></i></span>
+            <a href="${song.filePath}" download class="downloadBtn"><i class="fas fa-download"></i></a>
+        </span>
+    `;
+    songItemContainer.appendChild(div);
 });
 
-// Play/pause toggle
+let songItemPlays = Array.from(document.getElementsByClassName('songItemPlay'));
+
+// Helper: Reset all play buttons
+const makeAllPlays = () => {
+    songItemPlays.forEach(el => el.className = 'fas songItemPlay fa-play-circle');
+}
+
+// Master play/pause
 masterPlay.addEventListener('click', () => {
     if (!audioElement.src) audioElement.src = songs[songIndex].filePath;
 
-    if (audioElement.paused || audioElement.currentTime <= 0) {
+    if(audioElement.paused || audioElement.currentTime <= 0){
         audioElement.play().catch(err => console.log("Play blocked:", err));
-        masterPlay.className = 'far fa-3x fa-pause-circle';
+        masterPlay.className = 'fas fa-3x fa-pause-circle';
         gif.style.opacity = 1;
+        songItemPlays[songIndex].className = 'fas songItemPlay fa-pause-circle';
     } else {
         audioElement.pause();
-        masterPlay.className = 'far fa-3x fa-play-circle';
+        masterPlay.className = 'fas fa-3x fa-play-circle';
         gif.style.opacity = 0;
+        songItemPlays[songIndex].className = 'fas songItemPlay fa-play-circle';
     }
 });
 
-// Update progress bar
+// Progress bar
 audioElement.addEventListener('timeupdate', () => {
     let progress = parseInt((audioElement.currentTime / audioElement.duration) * 100) || 0;
     myProgressBar.value = progress;
 });
-
-// Seek in song
 myProgressBar.addEventListener('input', () => {
     audioElement.currentTime = myProgressBar.value * audioElement.duration / 100;
 });
 
-// Helper to reset all play buttons
-const makeAllPlays = () => {
-    Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) => {
-        element.className = 'far songItemPlay fa-play-circle';
-    });
-};
-
-// Play specific song
-Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) => {
+// Play individual song
+songItemPlays.forEach(element => {
     element.addEventListener('click', (e) => {
         let target = e.target.closest('.songItemPlay');
-        if (!target) return;
+        if(!target) return;
 
         makeAllPlays();
         songIndex = parseInt(target.id);
@@ -75,29 +84,28 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) =>
         audioElement.currentTime = 0;
         audioElement.play().catch(err => console.log("Play blocked:", err));
         gif.style.opacity = 1;
-        masterPlay.className = 'far fa-3x fa-pause-circle';
-        target.className = 'far songItemPlay fa-pause-circle';
+        masterPlay.className = 'fas fa-3x fa-pause-circle';
+        target.className = 'fas songItemPlay fa-pause-circle';
     });
 });
 
-// Next song
+// Next / Previous
 document.getElementById('next').addEventListener('click', () => {
     songIndex = (songIndex + 1) % songs.length;
     audioElement.src = songs[songIndex].filePath;
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play().catch(err => console.log("Play blocked:", err));
-    masterPlay.className = 'far fa-3x fa-pause-circle';
+    masterPlay.className = 'fas fa-3x fa-pause-circle';
     makeAllPlays();
 });
 
-// Previous song
 document.getElementById('previous').addEventListener('click', () => {
     songIndex = (songIndex - 1 + songs.length) % songs.length;
     audioElement.src = songs[songIndex].filePath;
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play().catch(err => console.log("Play blocked:", err));
-    masterPlay.className = 'far fa-3x fa-pause-circle';
+    masterPlay.className = 'fas fa-3x fa-pause-circle';
     makeAllPlays();
 });
