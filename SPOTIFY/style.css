@@ -28,12 +28,13 @@ nav ul li:hover {
     color: #1db954;
     cursor: pointer;
 }
+
 .brand {
     display: flex;
-    align-items: center;  /* vertically centers the text with the logo */
+    align-items: center;
     font-weight: bolder;
     font-size: 1.3rem;
-    gap: 8px;  /* space between logo and text */
+    gap: 8px;
 }
 
 .brand img {
@@ -85,6 +86,30 @@ nav ul li:hover {
     transform: scale(1.1);
 }
 
+/* Song controls inside songItem */
+.songlistplay {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.timestamp {
+    font-size: 14px;
+    min-width: 50px;
+}
+
+.songItemPlay {
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.songItemPlay:hover {
+    transform: scale(1.3);
+    color: #1db954;
+}
+
 /* Bottom Player */
 .bottom {
     background-color: #191414;
@@ -105,6 +130,7 @@ nav ul li:hover {
     color: white;
     cursor: pointer;
     transition: transform 0.2s ease, color 0.3s ease;
+    font-size: 30px;
 }
 
 .icons i:hover {
@@ -116,6 +142,8 @@ nav ul li:hover {
     width: 80%;
     margin: 0 0 10px 0;
     accent-color: #1db954;
+    border-radius: 5px;
+    height: 6px;
 }
 
 .songInfo {
@@ -124,6 +152,7 @@ nav ul li:hover {
     margin-top: 10px;
     gap: 10px;
 }
+
 .downloadBtn {
     margin-left: 10px;
     color: white;
@@ -134,5 +163,5 @@ nav ul li:hover {
 }
 
 .downloadBtn:hover {
-    color: #1db954; /* Spotify green hover */
+    color: #1db954;
 }
